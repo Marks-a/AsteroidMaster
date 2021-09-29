@@ -36,7 +36,7 @@ if r.status_code == 200:
 	if 'element_count' in json_data:
 		ast_count = int(json_data['element_count'])
 		print("Asteroid count today: " + str(ast_count))
-# Ja asteroids vairak neka 0
+# Ja asteroids vairak neka 0 un vinu parametri
 		if ast_count > 0:
 			for val in json_data['near_earth_objects'][request_date]:
 				if 'name' and 'nasa_jpl_url' and 'estimated_diameter' and 'is_potentially_hazardous_asteroid' and 'close_approach_data' in val:
@@ -77,14 +77,14 @@ if r.status_code == 200:
 							tmp_ast_close_appr_dt_utc = "1969-12-31 23:59:59"
 							tmp_ast_close_appr_dt = "1969-12-31 23:59:59"
 					else:
-#Nav tuvi asteroidi musu zeme 
+# Nav tuvi asteroidi musu zeme (No close asteroids) 
 						print("No close approach data in message")
 						tmp_ast_close_appr_ts = 0
 						tmp_ast_close_appr_dt_utc = "1970-01-01 00:00:00"
 						tmp_ast_close_appr_dt = "1970-01-01 00:00:00"
 						tmp_ast_speed = -1
 						tmp_ast_miss_dist = -1
-#Infomacija par asteroidiem
+#Infomacija par asteroidiem  (information from the data recieved)
 					print("------------------------------------------------------- >>")
 					print("Asteroid name: " + str(tmp_ast_name) + " | INFO: " + str(tmp_ast_nasa_jpl_url) + " | Diameter: " + str(tmp_ast_diam_min) + " - " + str(tmp_ast_diam_max) + " km | Hazardous: " + str(tmp_ast_hazardous))
 					print("Close approach TS: " + str(tmp_ast_close_appr_ts) + " | Date/time UTC TZ: " + str(tmp_ast_close_appr_dt_utc) + " | Local TZ: " + str(tmp_ast_close_appr_dt))
