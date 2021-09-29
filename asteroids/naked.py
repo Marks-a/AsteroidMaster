@@ -32,7 +32,7 @@ if r.status_code == 200:
 #Define kadi ir asteroidi
 	ast_safe = []
 	ast_hazardous = []
-#Cik asteroidi ir Today(shodien)
+#Cik asteroidi(Element) ir Today(shodien)
 	if 'element_count' in json_data:
 		ast_count = int(json_data['element_count'])
 		print("Asteroid count today: " + str(ast_count))
