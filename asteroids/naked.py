@@ -12,6 +12,15 @@ print('Asteroid processing service')
 # Initiating and reading config values
 print('Loading configuration from file')
 
+#try:
+#	config = ConfigParser()
+#	config.read('config.ini')
+#
+#	nasa_api_key = config.get('nasa', 'api_key')
+#	nasa_api_url = config.get('nasa', 'api_url')
+#except:
+#	logger.exception('')
+#print('DONE')
 
 #API keys
 nasa_api_key = "61uBQC4b13NRosjHTsAZhLAJ8A3Thnb0SNI9d9fP"
