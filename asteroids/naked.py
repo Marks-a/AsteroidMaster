@@ -3,6 +3,12 @@ import json
 import datetime
 import time
 import yaml
+import logging
+import logging.config
+import yaml
+
+
+
 
 from datetime import datetime
 from configparser import ConfigParser
@@ -12,6 +18,7 @@ print('Asteroid processing service')
 # Initiating and reading config values
 print('Loading configuration from file')
 
+# Arejas lasishanas
 #try:
 #	config = ConfigParser()
 #	config.read('config.ini')
@@ -25,6 +32,13 @@ print('Loading configuration from file')
 #API keys
 nasa_api_key = "61uBQC4b13NRosjHTsAZhLAJ8A3Thnb0SNI9d9fP"
 nasa_api_url = "https://api.nasa.gov/neo/"
+
+#Logging conf
+with open('./log_worker.yaml', 'r') as stream:
+	log_config = yaml.safe_load(stream)
+logging.config.dictConfig(log_config)
+#creat logger
+logger = logging.getLogger('root')
 
 # Getting todays date
 dt = datetime.now()
