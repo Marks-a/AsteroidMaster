@@ -23,7 +23,7 @@ logger.info('Asteroid DB migration service')
 
 # Initiating and reading config values
 logger.info('Loading configuration from file')
-
+#Read info from config.ini file that we configured 
 try:
 	config = ConfigParser()
 	config.read('config.ini')
@@ -39,13 +39,13 @@ logger.info('DONE')
 
 connection = None
 connected = False
-
+#start db connection on a local host machine
 def init_db():
 	global connection
 	connection = mysql.connector.connect(host=mysql_config_mysql_host, database=mysql_config_mysql_db, user=mysql_config_mysql_user, password=mysql_config_mysql_pass)
 
 init_db()
-
+#Establish connection or if connection exist
 def get_cursor():
 	global connection
 	try:
@@ -63,6 +63,7 @@ try:
 	# connection = mysql.connector.connect(host=mysql_config_mysql_host, database=mysql_config_mysql_db, user=mysql_config_mysql_user, password=mysql_config_mysql_pass)
 	cursor = get_cursor()
 	if connection.is_connected():
+#If connection is succesfull  show result
 		db_Info = connection.get_server_info()
 		logger.info('Connected to MySQL database. MySQL Server version on ' + str(db_Info))
 		cursor = connection.cursor()
@@ -71,6 +72,7 @@ try:
 		logger.debug('Your connected to - ' + str(record))
 		connection.commit()
 except Error as e :
+#Error if connection failled
 	logger.error('Error while connecting to MySQL' + str(e))
 
 
@@ -145,7 +147,7 @@ def mysql_migration_value_insert(name, exec_ts, exec_dt):
 		logger.error( "INSERT INTO `migrations` (`name`, `exec_ts`, `exec_dt`) VALUES ('" + str(name) + "', '" + str(exec_ts) + "', '" + str(exec_dt) + "')")
 		logger.error('Problem inserting migration values into DB: ' + str(e))
 		pass
-
+#  if table named migrations exist and if not the ncreate it
 if mysql_check_if_table_exists("migrations") == []:
 	mysql_create_migrations_table()
 else:
@@ -163,7 +165,7 @@ for f_name in migrations_files_list:
 migrations_list.sort(reverse=False)
 
 counter = 0
-
+# Lazy automatic process of getting info and storing it in database
 for migration in migrations_list:
 	if mysql_check_if_migration_exists(migration) == 0:
 		with open(cur_dir + "/migrations/" + migration,'r') as file:
