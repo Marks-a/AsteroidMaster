@@ -17,7 +17,7 @@ from datetime import datetime
 from configparser import ConfigParser
 
 print('Asteroid processing service')
-
+#pievienoju jaunu commentaru
 # Initiating and reading config values
 print('Loading configuration from file')
 
