@@ -3,6 +3,7 @@ import json
 import datetime
 import time
 import yaml
+<<<<<<< HEAD
 import logging
 import logging.config
 import yaml
@@ -10,6 +11,9 @@ import yaml
 
 
 
+=======
+#SHIS IS HOTFIX ES IZDARIJU IZMAINAS AR SHO COMMENTARU
+>>>>>>> 1.1.1
 from datetime import datetime
 from configparser import ConfigParser
 
