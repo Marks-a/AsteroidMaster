@@ -3,7 +3,7 @@ import json
 import datetime
 import time
 import yaml
-
+#SHIS IS HOTFIX ES IZDARIJU IZMAINAS AR SHO COMMENTARU
 from datetime import datetime
 print('Asteroid processing service')
 
